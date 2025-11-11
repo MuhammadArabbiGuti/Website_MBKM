@@ -1,30 +1,18 @@
 <template>
     <div class="gallery-page">
     <header class="gallery-header">
-      <h1>Galeri</h1>
+      <h1>Galeri Foto dan Video</h1>
       <p>Dokumentasi foto dan video kegiatan pengadaan barang dan jasa pemerintah</p>
     </header>
 
     <h2>Galeri Foto</h2>
     <section class="gallery-grid">
-      <div class="gallery-item">
-        <img src="/assets/kantor.jpg" alt="Foto Kegiatan 1">
-      </div>
-      <div class="gallery-item">
-        <img src="/assets/kantor.jpg" alt="Foto Kegiatan 2">
-      </div>
-      <div class="gallery-item">
-        <img src="/assets/kantor.jpg" alt="Foto Kegiatan 3">
-      </div>
-      <div class="gallery-item">
-        <img src="/assets/kantor.jpg" alt="Foto Kegiatan 1">
-      </div>
-      <div class="gallery-item">
-        <img src="/assets/kantor.jpg" alt="Foto Kegiatan 2">
-      </div>
-      <div class="gallery-item">
-        <img src="/assets/kantor.jpg" alt="Foto Kegiatan 3">
-      </div>
+      <img src="/assets/kantor.jpg" alt="Foto Kegiatan 1" class="gallery-item">
+      <img src="/assets/kantor.jpg" alt="Foto Kegiatan 2" class="gallery-item">
+      <img src="/assets/kantor.jpg" alt="Foto Kegiatan 3" class="gallery-item">
+      <img src="/assets/kantor.jpg" alt="Foto Kegiatan 4" class="gallery-item">
+      <img src="/assets/kantor.jpg" alt="Foto Kegiatan 5" class="gallery-item">
+      <img src="/assets/kantor.jpg" alt="Foto Kegiatan 6" class="gallery-item">
     </section>
     <br></br>
     
@@ -66,19 +54,15 @@
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
 .gallery-item {
-  background: white;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
-}
-
-.gallery-item img {
   width: 100%;
   height: 200px;
   object-fit: cover;

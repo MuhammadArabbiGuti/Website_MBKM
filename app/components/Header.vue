@@ -3,6 +3,7 @@
   import Mega_L from './MegaMenu/Mega_L.vue';
   import Mega_R from './MegaMenu/Mega_R.vue';
   import Mega_P from './MegaMenu/Mega_P.vue';
+import Mega_G from './MegaMenu/Mega_G.vue';
 </script>
 
 <template>
@@ -20,7 +21,7 @@
         <li><Mega_P /></li>
         <li><a href="/Berita/berita">Arsip Berita</a></li>
         <li><Mega_L /></li>
-        <li><a href="/galeri">Galeri</a></li>
+        <li><Mega_G /></li>
         <li><a href="/unduhan">Unduhan</a></li>
         <li><a href="https://pbj.kalbarprov.go.id/ppid/">PPID</a></li>
         <li><a href="/kontak">Kontak</a></li>
@@ -95,7 +96,7 @@
 .header_nav a {
   text-decoration: none;
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 </style>

@@ -1,73 +1,33 @@
 <template>
     <div class="mega" @mouseleave="closeMega">
         <a @mouseover="openMega" class="mega_b">
-            Regulasi ▾
+            Galeri ▾
         </a>
         <div v-if="isOpen" class="mega_m" >
           <div class="mega_ti">
-            <h1>Regulasi</h1>
-            <p>Dokumen - dokumen berisi Regulasi pada Biro Pengadaan Barang dan Jasa</p>
+            <h1>Galeri</h1>
+            <p>Galeri Biro Pengadaan Barang dan Jasa</p>
           </div>
-          <div class="mega_g">
             <div class="mega_c">
-              <NuxtLink class="mega_d" to="https://jdih.lkpp.go.id/" target="_blank">
+              <NuxtLink class="mega_d" to="/galeri2">
                 <div class="container">
-                  <img src="@/assets/external-link.svg" class="svg-icon" />
+                  <img src="@/assets/info.svg" class="svg-icon" />
                   <div>
-                    <a>Pusat</a>
-                    <p>Regulasi Pusat pada website JDIH LKPP</p>
+                    <a>Pelayanan</a>
+                    <p>Galeri Pelayanan pada Biro PBJ</p>
                   </div>
                 </div>
               </NuxtLink>
-              <NuxtLink class="mega_d" to="https://jdih.kalbarprov.go.id/" target="_blank">
+              <NuxtLink class="mega_d" to="/galeri">
                 <div class="container">
-                  <img src="@/assets/external-link.svg"/>
+                  <img src="@/assets/image.svg"/>
                   <div>
-                    <a>JDIH</a>
-                    <p>Website Jaringan Dokumentasi dan Informasi Hukum Kalbarprov</p>
-                  </div>
-                </div>
-              </NuxtLink>
-              <NuxtLink class="mega_d" to="/Regulasi/r_presiden" @click="closeMega">
-                <div class="container">
-                  <img src="@/assets/briefcase.svg" class="tes" />
-                  <div>
-                    <a>Instruksi Presiden</a>
-                    <p>Dokumen Regulasi Instruksi Presiden</p>
+                    <a>Foto dan Video</a>
+                    <p>Galeri Foto dan Video pada Biro PBJ</p>
                   </div>
                 </div>
               </NuxtLink>
             </div>
-            <div class="mega_c">
-              <NuxtLink class="mega_d" to="/Regulasi/r_daerah" @click="closeMega">
-                <div class="container">
-                  <img src="@/assets/map.svg"/>
-                  <div>
-                    <a>Daerah</a>
-                    <p>Dokumen Regulasi Daerah</p>
-                  </div>
-                </div>
-              </NuxtLink>
-              <NuxtLink class="mega_d" to="/Regulasi/lkpp" @click="closeMega">
-                <div class="container">
-                  <img src="@/assets/book-open.svg"/>
-                  <div>
-                    <a>LKPP</a>
-                    <p>Regulasi Lembaga Kebijakan Pengadaan Barang dan Jasa Pemerintah</p>
-                  </div>
-                </div>
-              </NuxtLink>
-              <NuxtLink class="mega_d" to="/Regulasi/pupr" @click="closeMega">
-                <div class="container">
-                  <img src="@/assets/home.svg"/>
-                  <div>
-                    <a>PUPR</a>
-                    <p>Regulasi Kementerian Pekerjaan Umum dan Perumahan Rakyat</p>
-                  </div>
-                </div>
-              </NuxtLink>
-            </div>
-          </div>
         </div>
     </div>
 </template>
@@ -105,8 +65,8 @@
   position: absolute;
   background: #fff;
   padding: 20px;
-  width: 900px;
-  height: 400px;
+  width: 350px;
+  height: 285px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   justify-content: center;

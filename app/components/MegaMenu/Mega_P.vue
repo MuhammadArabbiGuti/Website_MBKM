@@ -106,6 +106,7 @@
   color: white;
   cursor: pointer;
   transition: color 0.3s ease;
+  font-size: 15px;
 }
 
 .mega_b:hover {
