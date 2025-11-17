@@ -1,15 +1,50 @@
+<script setup>
+  import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+  const isOpen = ref(false)
+  const isMobile = ref(false)
+  
+  const openMega = () => {
+    if(isMobile.value){
+      (isOpen.value = !isOpen.value)
+    } else {
+      isOpen.value = true
+    }
+  }
+  
+  const closeMega = () => {
+    if (!isMobile.value) isOpen.value = false
+  }
+
+  const checkScreen = () => {
+    isMobile.value = window.innerWidth <= 768
+  }
+
+  onMounted(() => {
+    checkScreen()
+    window.addEventListener('resize', checkScreen)
+  })
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', checkScreen)
+  })
+
+</script>
+
 <template>
-    <div class="mega" @mouseleave="closeMega">
-        <a @mouseover="openMega" class="mega_b">
-            Program Kerja ▾
+    <div class="mega" @mouseleave="closeMega" @mouseenter="!isMobile && (isOpen = true)">
+        <a @click="openMega" class="mega_b">
+            Program Kerja▾
         </a>
-        <div v-if="isOpen" class="mega_m" >
+
+        <transition name="expand">
+        <div v-if="isOpen" class="mega_m" :class="{ mobile: isMobile }">
           <div class="mega_ti">
             <h1>Program Kerja</h1>
             <p>Dokumen - dokumen berisi Program Kerja pada Biro Pengadaan Barang dan Jasa</p>
           </div>
+
           <div class="mega_g">
-            <div class="mega_c" style="padding-right: 20px; margin-right: 20px; border-right: 1px solid #ddd;">
+            <div class="mega_c1" >
               <h3> SOP: </h3>
               <NuxtLink class="mega_d" to="/SOP/s_pbj" @click="closeMega">
                 <div class="container">
@@ -39,8 +74,9 @@
                 </div>
               </NuxtLink>
             </div>
+
             <div class="mega_c">
-              <h3 style="color: white;"> . </h3>
+              <h3> Dokumen Lainnya: </h3>
               <NuxtLink class="mega_d" to="/DokumenPK/rencanaumum" @click="closeMega">
                 <div class="container">
                   <img src="@/assets/logo.png"/>
@@ -78,8 +114,9 @@
                 </div>
               </NuxtLink>
             </div>
+
             <div class="mega_c">
-              <h3> Dokumen Lainnya: </h3> 
+              <h3 style="color: white;" :class="{ mobile: isMobile }"> . </h3> 
               <NuxtLink class="mega_d" to="/DokumenPK/rka" @click="closeMega">
                 <div class="container">
                   <img src="@/assets/logo.png"/>
@@ -117,8 +154,9 @@
                 </div>
               </NuxtLink>
             </div>
-            <div class="mega_c" style="padding-right: 10px;">
-              <h3 style="color: white;"> . </h3>
+
+            <div class="mega_c">
+              <h3 style="color: white;" :class="{ mobile: isMobile }"> . </h3>
               <NuxtLink class="mega_d" to="/DokumenPK/programkegiatan" @click="closeMega">
                 <div class="container">
                   <img src="@/assets/logo.png"/>
@@ -140,18 +178,28 @@
             </div>
           </div>
         </div>
+      </transition>
     </div>
 </template>
 
-<script setup>
-    import { ref } from 'vue'
-
-    const isOpen = ref(false)
-    const openMega = () => (isOpen.value = true)
-    const closeMega = () => (isOpen.value = false)
-</script>
-
 <style scoped>
+
+.expand-enter-active, .expand-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.expand-enter-from, .expand-leave-to {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.expand-enter-to, .expand-leave-from {
+  max-height: 800px;
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .mega{
   position: relative;
@@ -172,15 +220,12 @@
 }
 
 .mega_m {
-  display: block;
   position: absolute;
   background: #fff;
   padding: 20px;
   width: 1400px;
-  height: 600px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  justify-content: center;
   z-index: 999;
   top: 105%;  
   left: 50%; 
@@ -216,12 +261,12 @@
   margin: 0;
 }
 
-.mega_c {
+.mega_c, .mega_c1 {
   flex: 1;
   margin: 0 1rem;
 }
 
-.mega_c h3 {
+.mega_c h3, .mega_c1 h3 {
   font-size: 20px;
   display: block;
   color: #333;
@@ -231,22 +276,29 @@
   padding-bottom: 0.3rem;
 }
 
-.mega_c p{
+.mega_c p, .mega_c1 p{
   font-size: 15px;
   color: #333;
   font-weight: normal;
   margin: 0;
 }
 
-.mega_c a{
+.mega_c a, .mega_c1 a{
   font-size: 18px;
   display: block;
   color: #333;
   text-decoration: none;
   padding: 0.3rem 0;
 }
+
+.mega_c1{
+  padding-right: 20px; 
+  margin-right: 20px; 
+  border-right: 1px solid #ddd;
+}
   
 .mega_d {
+  display: block;
   text-decoration: none;
   margin-bottom: 20px;
   transition: transform 0.3s ease;
@@ -278,13 +330,60 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 15px;
-  width: 300px;
-  height: 60px;
 }
 
 .container div{
   margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .mega_m.mobile {
+    position: static;
+    background: #2f6d3f;
+    color: white;
+    box-shadow: none;
+    width: 100%;
+    padding: 10px 15px;
+    transform: translateX(-10%);
+  }
+
+  .mega_ti {
+    display: none;
+  }
+
+  .mega_g {
+    flex-direction: column;
+  }
+
+  .mega_d {
+    background-image: none;
+  }
+
+  .mega_d img {
+    width: 30%;
+  }
+
+  .container a {
+    color: white;
+  }
+
+  .container p {
+    display: none;
+  }
+
+  .mega_c1 {
+    border: none;
+    padding: none;
+  }
+
+  .mega_c h3, .mega_c1 h3 {
+    color:#f1c40f;
+    text-align: left;
+  }
+
+  h3.mobile {
+    display: none;
+  }
 }
 
 </style>

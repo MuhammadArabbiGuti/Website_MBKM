@@ -1,13 +1,49 @@
+<script setup>
+  import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+  const isOpen = ref(false)
+  const isMobile = ref(false)
+  
+  const openMega = () => {
+    if(isMobile.value){
+      (isOpen.value = !isOpen.value)
+    } else {
+      isOpen.value = true
+    }
+  }
+  
+  const closeMega = () => {
+    if (!isMobile.value) isOpen.value = false
+  }
+
+  const checkScreen = () => {
+    isMobile.value = window.innerWidth <= 768
+  }
+
+  onMounted(() => {
+    checkScreen()
+    window.addEventListener('resize', checkScreen)
+  })
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', checkScreen)
+  })
+
+</script>
+
+
 <template>
-    <div class="mega" @mouseleave="closeMega">
-        <a @mouseover="openMega" class="mega_b">
-            Laporan ▾
+    <div class="mega" @mouseleave="closeMega" @mouseenter="!isMobile && (isOpen = true)">
+        <a @click="openMega" class="mega_b">
+            Laporan▾
         </a>
-        <div v-if="isOpen" class="mega_m" >
+        
+      <transition name="expand">
+        <div v-if="isOpen" class="mega_m" :class="{ mobile: isMobile }">
           <div class="mega_ti">
             <h1>Laporan</h1>
             <p>Dokumen - dokumen berisi Laporan pada Biro Pengadaan Barang dan Jasa</p>
           </div>
+
           <div class="mega_g">
             <div class="mega_c">
               <NuxtLink class="mega_d" to="/Laporan/pengaduan" @click="closeMega">
@@ -38,6 +74,7 @@
                 </div>
               </NuxtLink>
             </div>
+
             <div class="mega_c">
               <NuxtLink class="mega_d" to="/Laporan/lm_resiko" @click="closeMega">
                 <div class="container">
@@ -67,6 +104,7 @@
                 </div>
               </NuxtLink>
             </div>
+
             <div class="mega_c">
               <NuxtLink class="mega_d" to="/Laporan/skm" @click="closeMega">
                 <div class="container">
@@ -98,18 +136,28 @@
             </div>
           </div>
         </div>
+      </transition>
     </div>
 </template>
 
-<script setup>
-    import { ref } from 'vue'
-
-    const isOpen = ref(false)
-    const openMega = () => (isOpen.value = true)
-    const closeMega = () => (isOpen.value = false)
-</script>
-
 <style scoped>
+
+.expand-enter-active, .expand-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.expand-enter-from, .expand-leave-to {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.expand-enter-to, .expand-leave-from {
+  max-height: 800px;
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .mega{
   position: relative;
@@ -130,15 +178,12 @@
 }
 
 .mega_m {
-  display: block;
   position: absolute;
   background: #fff;
   padding: 20px;
   width: 1200px;
-  height: 400px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  justify-content: center;
   z-index: 999;
   top: 105%;  
   left: -300px; 
@@ -205,6 +250,7 @@
 }
 
 .mega_d {
+  display: block;
   text-decoration: none;
   margin-bottom: 20px;
   transition: transform 0.3s ease;
@@ -236,13 +282,48 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 15px;
-  width: 300px;
-  height: 60px;
 }
 
 .container div{
   margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .mega_m.mobile {
+    position: static;
+    background: #2f6d3f;
+    color: white;
+    box-shadow: none;
+    width: 100%;
+    padding: 10px 15px;
+    transform: translateX(-10%);
+  }
+
+  .mega_ti {
+    display: none;
+  }
+
+  .mega_g {
+    flex-direction: column;
+  }
+
+  .mega_d {
+    background-image: none;
+  }
+
+  .mega_d img {
+    background-color: #fff;
+    border-radius: 100%;
+    padding: 2%;
+  }
+
+  .container a {
+    color: white;
+  }
+
+  .container p {
+    display: none;
+  }
 }
 
 </style>
