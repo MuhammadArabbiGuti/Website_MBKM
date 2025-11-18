@@ -28,7 +28,7 @@
         <div class="footer_links">
           <h4>Tautan Cepat</h4>
           <div>
-            <ul>
+            <ul class="l1">
               <li><a href="/">Home</a></li>
               <li><a href="/profile">Profil</a></li>
               <li><a href="/programkerja">Program Kerja</a></li>
@@ -36,7 +36,7 @@
               <li><a href="/pelayanan">Pelayanan</a></li>
               <li><a href="/laporan">Laporan</a></li>
             </ul>
-            <ul>
+            <ul class="l2">
               <li><a href="/Berita/berita">Arsip Berita</a></li>
               <li><a href="/galeri">Galeri</a></li>
               <li><a href="/unduhan">Unduhan</a></li>
@@ -71,7 +71,6 @@
 
 .footer_about{
   text-align: left;
-  margin-top: 15px;
 }
   
 .footer_about h3 {
@@ -79,6 +78,8 @@
   margin-bottom: 10px;
   font-weight: bold;
   color: #ffffff;
+  border-bottom: solid #f1c40f 2px;
+  padding-bottom: 5%;
 }
   
 .footer_about p {
@@ -96,6 +97,9 @@
   font-size: 18px;
   margin-bottom: 30px;
   font-weight: bold;
+  border-bottom: solid #f1c40f 2px;
+  padding-bottom: 5%;
+  margin-top: 50px;
 }
   
 .footer_contact p {
@@ -118,7 +122,7 @@
 }
 
 .footer_links h4 {
-  text-align: center;
+  text-align: left;
   margin-right: 70px;
 }
 
@@ -137,6 +141,14 @@
 .footer_links li {
   margin: 6px 0;
   margin-top: 10px;
+}
+
+.footer_links .l1 {
+  text-align: left;
+}
+
+.footer_links .l2 {
+  text-align: right;
 }
   
 .footer_links a {
@@ -159,6 +171,47 @@
 .footer_bottom p {
   font-size: 14px;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer_container {
+    gap: 20px;
+  }
+
+  .footer_about {
+    text-align: center;
+  }
+
+  .footer_contact {
+    text-align: center;
+  }
+
+  .footer_contact h4, .footer_links h4, .footer_about h3 {
+    border-bottom: none;
+    padding-bottom: 0%;
+  }
+
+  .footer_about, .footer_contact, .footer_links div {
+    border-bottom: solid #f1c40f 2px;
+    padding-bottom: 5%;
+  }
+
+  .footer_links {
+    text-align: center;
+    padding: 0;
+  }
+
+  .footer_links h4 {
+    margin-left: 100px;
+  }
+
+  .footer_links div {
+    display: flex;
+    flex-direction: row;
+    gap: 110px;
+    text-align: right;
+    margin-left: 10px;
+  } 
 }
 
 </style>

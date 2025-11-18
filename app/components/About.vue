@@ -14,7 +14,7 @@
           <img src="/assets/sejarah.png" alt="Tentang Biro" />
         </div>
         <div class="about_image">
-          <img src="/assets/zona-integritas.jpg" alt="Zona Integritas" />
+          <img src="/assets/zona-integritas.jpg" alt="Zona Integritas" style="border: solid #2f6d3f 2px; border-radius: 8px;"/>
         </div>
       </div>
     </section>
@@ -35,12 +35,17 @@
   gap: 40px;
   align-items: center;
 }
+
+.about_content {
+  border-left: solid #f1c40f 5px;
+}
   
 .about_title {
   font-size: 28px;
   font-weight: bold;
-  color: #2f6d3f;; 
+  color: #2f6d3f; 
   margin-bottom: 20px;
+  padding-left: 2%;
 }
   
 .about_history {
@@ -48,13 +53,20 @@
   line-height: 1.6;
   color: #2c3e50;
   margin-bottom: 30px;
+  padding-left: 2%;
 }
   
 .about_image img {
   width: 90%;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-} 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about_image img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
   
 @media (max-width: 992px) {
   .about_container {

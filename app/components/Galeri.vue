@@ -72,4 +72,10 @@
   transform: scale(1.1);
 }
 
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 </style>

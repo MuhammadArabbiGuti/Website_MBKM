@@ -100,6 +100,27 @@
   border-radius: 8px;
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+}
+
+.motto_photo img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 768px) {
+  .motto {
+    padding: 30px 10px;
+  }
+
+  .motto_photo img{
+    width: 100%;
+    height: auto;
+  }
+
+  .motto_container {
+    flex-direction: column;
+  }
 }
 
 </style>

@@ -39,6 +39,12 @@
   border-radius: 8px;
   border: 4px solid #1b4332;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pimpinan_photo img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
 .pimpinan_photo h2 {

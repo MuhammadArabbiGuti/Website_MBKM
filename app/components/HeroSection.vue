@@ -24,6 +24,7 @@
   background-size: cover;
   background-position: center;
   position: relative;
+  border-bottom: solid #f1c40f 5px;
 }
   
 .hero::after {

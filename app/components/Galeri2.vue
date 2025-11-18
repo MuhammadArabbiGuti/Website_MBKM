@@ -59,4 +59,16 @@
   transform: scale(1.1);
 }
 
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .gallery-item {
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+}
+
 </style>

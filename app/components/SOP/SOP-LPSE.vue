@@ -42,24 +42,32 @@ const  SOPList = [
 
 <style scoped>
 .s {
-    padding: 50px 20px;
-    padding-left: 200px;
-    padding-right: 400px;
-    width: 1000px;
+    width: 100%;
+    max-width: 2000px;
     background-color: #f4f6f7;
     align-items: center;
+    padding: 20px 0;
 }
 
 .s_c{
-    margin-left: 100px;
     padding: 20px;
     background: white;
+    border-radius: 8px;
+    margin: 0 200px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.s_c h2 {
+    border-bottom: 2px solid #f1c40f;
+    padding-bottom: 2%;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    min-width: 600px;
 }
 
 th, td {
@@ -83,6 +91,12 @@ a:hover {
   text-decoration: none;
   background-color: #f1c40f;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+    .s_c {
+        margin: 10px
+    }
 }
 
 </style>

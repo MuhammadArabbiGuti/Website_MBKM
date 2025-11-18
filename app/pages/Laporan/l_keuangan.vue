@@ -116,28 +116,32 @@ const lkList4 = [
 
 <style scoped>
 .lk {
-    padding: 50px 20px;
-    padding-left: 0px;
-    padding-right: 100px;
+    width: 100%;
+    max-width: 2000px;
     background-color: #f4f6f7;
     align-items: center;
+    padding: 20px 0;
 }
 
 .lk_c{
     padding: 20px;
     background: white;
     border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    margin: 0 200px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    margin-left: 200px;
-    max-width: 1000px;
+    overflow-x: auto;
+}
+
+.lk_c h2 {
+    border-bottom: 2px solid #f1c40f;
+    padding-bottom: 2%;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    min-width: 600px;
 }
 
 th, td {
@@ -161,6 +165,12 @@ a:hover {
   text-decoration: none;
   background-color: #f1c40f;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+    .lk_c {
+        margin: 10px
+    }
 }
 
 </style>

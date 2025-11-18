@@ -59,15 +59,6 @@
 
             <div class="mega_c">
                 <h3>Formulir: </h3>
-                <NuxtLink class="mega_d" to="/Layanan/f_MBIZ" @click="closeMega">
-                <div class="container">
-                  <img src="@/assets/shopping-bag.svg"/>
-                  <div class="text">
-                    <a>MBIZ</a>
-                    <p>Formulir MBIZ Market</p>
-                  </div>
-                </div>
-                </NuxtLink>
                 <NuxtLink class="mega_d" to="/Layanan/f_pengaduan" @click="closeMega">
                 <div class="container">
                   <img src="@/assets/flag.svg"/>
@@ -86,10 +77,6 @@
                   </div>
                 </div>
                 </NuxtLink>
-            </div>
-
-            <div class="mega_c">
-                <h3 style="color: white;" :class="{ mobile: isMobile }"> . </h3>
                 <NuxtLink class="mega_d" to="/Layanan/f_saranusulan" @click="closeMega">
                 <div class="container">
                   <img src="@/assets/message-square.svg"/>
@@ -99,6 +86,10 @@
                   </div>
                 </div>
                 </NuxtLink>
+            </div>
+
+            <div class="mega_c">
+                <h3 style="color: white;" :class="{ mobile: isMobile }"> . </h3>
                 <NuxtLink class="mega_d" to="/Layanan/f_permintaan" @click="closeMega">
                 <div class="container">
                   <img src="@/assets/plus.svg"/>
@@ -305,6 +296,12 @@
     background-color: #fff;
     border-radius: 100%;
     padding: 2%;
+  }
+
+  .mega_d:hover a{
+    color: #f1c40f;
+    font-weight: 500;
+    border-bottom: #fff solid 3px;
   }
 
   .container a {

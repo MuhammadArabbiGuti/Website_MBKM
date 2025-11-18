@@ -26,6 +26,7 @@
 
 .sosmed{
     background-color: #ffffff;
+    border-left: solid #f1c40f 3px;
     max-width: 1000px;
     margin: 0 auto;
     display: flex;
@@ -56,13 +57,27 @@
 }
 
 .container a {
-  transition: color 0.3s ease;
-  text-decoration: none;
-  color: #2f6d3f;;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    color: #2f6d3f;;
 }
 
 .container a:hover {
-  color: #f1c40f; 
+    color: #f1c40f; 
 }
 
+@media (max-width:768px) {
+    .sosmed {
+        border-left: none;
+        border-top: solid #f1c40f 3px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .social {
+        width: 150%;
+    }
+}
 </style>

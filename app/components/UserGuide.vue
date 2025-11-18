@@ -35,33 +35,34 @@
 <style scoped>
 
 .t {
-  width: 1500px;
+  width: 100%;
+  max-width: 2000px;
   background-color: #f4f6f7;
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-right: 20px;
 }
 
 .table-container {
   padding: 20px;
   background: white;
   border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  margin: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin-left: 20px;
-  margin-top: 20px;
+  overflow-x: auto;
 }
 
 .t h2{
   margin: 20px 20px;
+  border-bottom: 2px solid #f1c40f;
+  padding-bottom: 1%;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  min-width: 600px;
 }
 
 th, td {

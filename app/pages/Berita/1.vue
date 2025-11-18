@@ -26,6 +26,7 @@ const detail = berita.value.find(item => item.id === Number(route.params.id))
 
 
 <style scoped>
+
 .berita-detail {
   padding: 20px;
 }
@@ -34,6 +35,14 @@ const detail = berita.value.find(item => item.id === Number(route.params.id))
   max-width: 500px;
   border-radius: 6px;
   margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .berita-detail img{
+    max-width: 100%;
+    border-radius: 6px;
+    margin: 1rem 0;
+  }
 }
 
 </style>

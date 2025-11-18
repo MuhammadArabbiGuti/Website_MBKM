@@ -124,6 +124,11 @@
     gap: 20px;
 }
 
+.tf h2 {
+    border-bottom: 2px solid #f1c40f;
+    padding-bottom: 3%;
+}
+
 .tf li{
     margin: 10px
 }

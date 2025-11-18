@@ -36,4 +36,12 @@ const detail = berita.value.find(item => item.id === Number(route.params.id))
   margin: 1rem 0;
 }
 
+@media (max-width: 768px) {
+  .berita-detail img{
+    max-width: 100%;
+    border-radius: 6px;
+    margin: 1rem 0;
+  }
+}
+
 </style>

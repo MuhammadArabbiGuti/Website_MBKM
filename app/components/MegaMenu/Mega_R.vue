@@ -45,36 +45,6 @@
 
           <div class="mega_g">
             <div class="mega_c">
-              <NuxtLink class="mega_d" to="https://jdih.lkpp.go.id/" target="_blank">
-                <div class="container">
-                  <img src="@/assets/external-link.svg" class="svg-icon" />
-                  <div>
-                    <a>Pusat</a>
-                    <p>Regulasi Pusat pada website JDIH LKPP</p>
-                  </div>
-                </div>
-              </NuxtLink>
-              <NuxtLink class="mega_d" to="https://jdih.kalbarprov.go.id/" target="_blank">
-                <div class="container">
-                  <img src="@/assets/external-link.svg"/>
-                  <div>
-                    <a>JDIH</a>
-                    <p>Website Jaringan Dokumentasi dan Informasi Hukum Kalbarprov</p>
-                  </div>
-                </div>
-              </NuxtLink>
-              <NuxtLink class="mega_d" to="/Regulasi/r_presiden" @click="closeMega">
-                <div class="container">
-                  <img src="@/assets/briefcase.svg" class="tes" />
-                  <div>
-                    <a>Instruksi Presiden</a>
-                    <p>Dokumen Regulasi Instruksi Presiden</p>
-                  </div>
-                </div>
-              </NuxtLink>
-            </div>
-
-            <div class="mega_c">
               <NuxtLink class="mega_d" to="/Regulasi/r_daerah" @click="closeMega">
                 <div class="container">
                   <img src="@/assets/map.svg"/>
@@ -84,21 +54,15 @@
                   </div>
                 </div>
               </NuxtLink>
-              <NuxtLink class="mega_d" to="/Regulasi/lkpp" @click="closeMega">
+            </div>
+
+            <div class="mega_c">
+              <NuxtLink class="mega_d" to="https://jdih.lkpp.go.id/" target="_blank">
                 <div class="container">
-                  <img src="@/assets/book-open.svg"/>
+                  <img src="@/assets/external-link.svg" class="svg-icon" />
                   <div>
                     <a>LKPP</a>
                     <p>Regulasi Lembaga Kebijakan Pengadaan Barang dan Jasa Pemerintah</p>
-                  </div>
-                </div>
-              </NuxtLink>
-              <NuxtLink class="mega_d" to="/Regulasi/pupr" @click="closeMega">
-                <div class="container">
-                  <img src="@/assets/home.svg"/>
-                  <div>
-                    <a>PUPR</a>
-                    <p>Regulasi Kementerian Pekerjaan Umum dan Perumahan Rakyat</p>
                   </div>
                 </div>
               </NuxtLink>
@@ -284,6 +248,12 @@
     background-color: #fff;
     border-radius: 100%;
     padding: 2%;
+  }
+
+  .mega_d:hover a{
+    color: #f1c40f;
+    font-weight: 500;
+    border-bottom: #fff solid 3px;
   }
 
   .container a {

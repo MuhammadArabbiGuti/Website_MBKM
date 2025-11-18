@@ -54,6 +54,7 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
 .header_logo {
@@ -80,7 +81,7 @@
   display: none;
   cursor: pointer;
   width: 1%;
-  margin-right: 10px;
+  margin-right: 5%;
   background: none;
   border: none;
   color: white;

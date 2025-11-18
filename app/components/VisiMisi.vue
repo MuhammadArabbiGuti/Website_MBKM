@@ -37,21 +37,19 @@
 }
 
 .visimisi p {
-    font-size: 25px;
+    font-size: 1rem;
     color: #333;
     max-width: 800px;
     margin: 0 auto 40px;
     padding: 0;
-    list-style-position: inside
 }
 
 .vm_container {
     max-width: 1000px;
     margin: 0 auto;
-    display: flex;
     flex-wrap: wrap;
     align-items: left;
-    gap: 200px;
+    gap: 10%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
@@ -65,7 +63,6 @@
     padding: 0;
     margin: 0 auto 40px;
     max-width: 800px;
-    list-style-position: inside
 }
 
 .misi ol li{
@@ -73,6 +70,33 @@
     color: #444;
     margin-bottom: 10px;
     text-align: left;
+}
+
+@media (max-width: 768px) {
+    .vm_container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10%;
+    }
+
+    .visi {
+        text-align: left;
+        width: 85%;
+        height: 90%;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .visi h2, .misi h2, .visi p, .misi ol {
+        padding-left: 5%;
+    }
+
+    .misi {
+        text-align: left;
+        width: 85%;
+        height: 90%;
+        border-left: 4px solid #f1c40f;
+        list-style-position: inside;
+        padding-bottom: 3%;
+    }
 }
 
 </style>

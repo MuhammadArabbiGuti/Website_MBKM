@@ -33,6 +33,7 @@
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: solid #f1c40f 1px;
 }
   
 .card:hover {

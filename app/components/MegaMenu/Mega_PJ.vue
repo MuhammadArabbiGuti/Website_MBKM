@@ -48,7 +48,7 @@
               <h3> SOP: </h3>
               <NuxtLink class="mega_d" to="/SOP/s_pbj" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/home.svg"/>
                   <div class="text">
                     <a>PBJ</a>
                     <p>SOP Bagian Pengelolaan Pengadaan Barang dan Jasa</p>
@@ -57,7 +57,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/SOP/s_lpse" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/hard-drive.svg"/>
                   <div class="text">
                     <a>LPSE</a>
                     <p>SOP Bagian Pengelolaan LPSE</p>
@@ -66,7 +66,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/SOP/s_pa" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/clipboard.svg"/>
                   <div class="text">
                     <a>Pembinaan dan Advokasi</a>
                     <p>SOP Bagian Pengelolaan Pembinaan dan Advokasi</p>
@@ -79,7 +79,7 @@
               <h3> Dokumen Lainnya: </h3>
               <NuxtLink class="mega_d" to="/DokumenPK/rencanaumum" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/grid.svg"/>
                   <div class="text">
                     <a>RUP</a>
                     <p>Dokumen Rencana Umum Pengadaan biro PBJ</p>
@@ -88,7 +88,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/DokumenPK/rencanaaksi" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/layout.svg"/>
                   <div class="text">
                     <a>Rencana Aksi</a>
                     <p>Dokumen Rencana Aksi biro PBJ</p>
@@ -97,7 +97,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/DokumenPK/renstra" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/list.svg"/>
                   <div class="text">
                     <a>Renstra</a>
                     <p>Dokumen Rencana Strategis biro PBJ</p>
@@ -106,7 +106,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/DokumenPK/renja" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/tool.svg"/>
                   <div class="text">
                     <a>Renja</a>
                     <p>Dokumen Rencana Kerja biro PBJ</p>
@@ -119,7 +119,7 @@
               <h3 style="color: white;" :class="{ mobile: isMobile }"> . </h3> 
               <NuxtLink class="mega_d" to="/DokumenPK/rka" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/dollar-sign.svg"/>
                   <div class="text">
                     <a>RKA</a>
                     <p>Dokumen Rencana Kerja dan Anggaran biro PBJ</p>
@@ -128,7 +128,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/DokumenPK/cascading" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/git-branch.svg"/>
                   <div class="text">
                     <a>Cascading</a>
                     <p>Dokumen Cascading (Penjabaran) biro PBJ</p>
@@ -137,7 +137,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/DokumenPK/indikator" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/play.svg"/>
                   <div class="text">
                     <a>Indikator Kerja Utama</a>
                     <p>Dokumen Indikator Kerja Utama biro PBJ</p>
@@ -146,7 +146,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/DokumenPK/perjanjian" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/share-2.svg"/>
                   <div class="text">
                     <a>Perjanjian Kerja</a>
                     <p>Dokumen Perjanjian Kerja biro PBJ</p>
@@ -159,7 +159,7 @@
               <h3 style="color: white;" :class="{ mobile: isMobile }"> . </h3>
               <NuxtLink class="mega_d" to="/DokumenPK/programkegiatan" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/activity.svg"/>
                   <div class="text">
                     <a>Program Kegiatan</a>
                     <p>Dokumen Program Kegiatan biro PBJ</p>
@@ -168,7 +168,7 @@
               </NuxtLink>
               <NuxtLink class="mega_d" to="/DokumenPK/pohonkinerja" @click="closeMega">
                 <div class="container">
-                  <img src="@/assets/logo.png"/>
+                  <img src="@/assets/bar-chart.svg"/>
                   <div class="text">
                     <a>Pohon Kinerja</a>
                     <p>Dokumen Pohon Kinerja biro PBJ</p>
@@ -223,7 +223,7 @@
   position: absolute;
   background: #fff;
   padding: 20px;
-  width: 1400px;
+  width: 1200px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   z-index: 999;
@@ -267,7 +267,7 @@
 }
 
 .mega_c h3, .mega_c1 h3 {
-  font-size: 20px;
+  font-size: 17px;
   display: block;
   color: #333;
   text-decoration: none;
@@ -277,14 +277,14 @@
 }
 
 .mega_c p, .mega_c1 p{
-  font-size: 15px;
+  font-size: 11px;
   color: #333;
   font-weight: normal;
   margin: 0;
 }
 
 .mega_c a, .mega_c1 a{
-  font-size: 18px;
+  font-size: 14px;
   display: block;
   color: #333;
   text-decoration: none;
@@ -292,8 +292,8 @@
 }
 
 .mega_c1{
-  padding-right: 20px; 
-  margin-right: 20px; 
+  padding-right: 15px; 
+  margin-right: 15px; 
   border-right: 1px solid #ddd;
 }
   
@@ -329,7 +329,7 @@
 .container{
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 1px;
 }
 
 .container div{
@@ -360,7 +360,15 @@
   }
 
   .mega_d img {
-    width: 30%;
+    background-color: #fff;
+    border-radius: 100%;
+    padding: 2%;
+  }
+
+  .mega_d:hover a{
+    color: #f1c40f;
+    font-weight: 500;
+    border-bottom: #fff solid 3px;
   }
 
   .container a {

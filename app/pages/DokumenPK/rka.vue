@@ -1,6 +1,6 @@
 <template>
     <section class="rka">
-        <div class="rka_container">
+        <div class="rka_c">
             <h2>Dokumen RKA (Rencana Kerja Anggaran)</h2>
             <table>
                 <thead>
@@ -37,40 +37,32 @@ const  rkaList = [
 
 <style scoped>
 .rka {
-    padding: 50px 20px;
-    padding-left: 0px;
-    padding-right: 100px;
+    width: 100%;
+    max-width: 2000px;
     background-color: #f4f6f7;
     align-items: center;
+    padding: 20px 0;
 }
 
-.rka_container{
+.rka_c {
     padding: 20px;
     background: white;
     border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    margin: 0 200px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    margin-left: 200px;
-    max-width: 1000px;
+    overflow-x: auto;
 }
 
-.btn {
-  padding: 5px;
-  transition: background-color 0.3s ease;
-  border-radius: 10px;
-}
-
-.btn:hover {
-  text-decoration: none;
-  background-color: #f1c40f;
-  color: #fff;
+.rka_c h2 {
+    border-bottom: 2px solid #f1c40f;
+    padding-bottom: 2%;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    min-width: 600px;
 }
 
 th, td {
@@ -82,6 +74,24 @@ th, td {
 th {
     background-color: #2f6d3f;
     color: white;
+}
+
+a {
+  padding: 5px;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: #f1c40f;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+    .rka_c {
+        margin: 10px
+    }
 }
 
 </style>

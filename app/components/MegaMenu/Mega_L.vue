@@ -317,6 +317,12 @@
     padding: 2%;
   }
 
+  .mega_d:hover a{
+    color: #f1c40f;
+    font-weight: 500;
+    border-bottom: #fff solid 3px;
+  }
+
   .container a {
     color: white;
   }

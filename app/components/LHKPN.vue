@@ -56,6 +56,11 @@ const  lhkpnList = [
     margin-top: 20px;
 }
 
+.l_container h2 {
+    border-bottom: 2px solid #f1c40f;
+    padding-bottom: 1%;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -83,6 +88,24 @@ a:hover {
   text-decoration: none;
   background-color: #f1c40f;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+    .l {
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .l_container {
+        margin: 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
 }
 
 </style>

@@ -50,8 +50,10 @@
 .layanan-utama_title {
   font-size: 28px;
   font-weight: bold;
-  color: #0a6d36; 
+  color: #2f6d3f; 
   margin-bottom: 40px;
+  border-bottom: solid #f1c40f 2px;
+  padding-bottom: 1%;
 }
   
 .layanan-utama_grid {
@@ -65,7 +67,7 @@
   border-radius: 8px;
   padding: 30px 20px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease, box-shadow 0.3s ease;
 }
   
 .layanan-card:hover {
@@ -95,7 +97,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #0a6d36;
+  color: #2f6d3f;
 }
   
 .layanan-card p {
