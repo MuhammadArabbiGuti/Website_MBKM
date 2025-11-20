@@ -40,20 +40,21 @@ const  lhkpnList = [
 
 <style scoped>
 .l {
-    width: 1300px;
     background-color: #f4f6f7;
     align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 190px;
+    padding: 80px 20px;
+    width: 100%;
+    max-width: 2000px;
 }
 
 .l_container{
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: auto;
     padding: 20px;
-    margin-bottom: 2rem;
-    margin-left: 40px;
-    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .l_container h2 {
@@ -65,6 +66,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    min-width: 600px;
 }
 
 th, td {
@@ -98,7 +100,7 @@ a:hover {
     }
 
     .l_container {
-        margin: 0;
+        margin: 10px;
     }
 
     table {

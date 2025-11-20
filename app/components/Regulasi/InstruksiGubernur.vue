@@ -36,43 +36,43 @@
 <style scoped>
 
 .t {
-    width: 100%;
-    max-width: 2000px;
-    background-color: #f4f6f7;
-    align-items: center;
-    padding: 20px 0;
+  width: 100%;
+  max-width: 2000px;
+  background-color: #f4f6f7;
+  align-items: center;
+  padding: 20px 0;
 }
 
 .t_c{
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    margin: 0 200px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  margin: 0 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
 }
 
 .t_c h2 {
-    border-bottom: 2px solid #f1c40f;
-    padding-bottom: 2%;
+  border-bottom: 2px solid #f1c40f;
+  padding-bottom: 2%;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  min-width: 600px;
 }
 
 th, td {
-    border: none;
-    padding: 8px;
-    text-align: left;
+  border: none;
+  padding: 8px;
+  text-align: left;
 }
 
 th {
-    background-color: #2f6d3f;
-    color: white;
+  background-color: #2f6d3f;
+  color: white;
 }
 
 a {
