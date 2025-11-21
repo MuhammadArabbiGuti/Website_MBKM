@@ -70,6 +70,7 @@
     .sosmed {
         border-left: none;
         border-top: solid #f1c40f 3px;
+        margin-bottom: 100px;
     }
 
     .container {

@@ -59,6 +59,7 @@
   background-color: #2f6d3f; 
   color: #ffffff;
   padding: 40px 20px 20px;
+  z-index: 100000;
 }
 
 .footer_container {
