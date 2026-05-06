@@ -14,7 +14,7 @@
                     <tr v-for="(cs, index) in csList" :key="index">
                         <td>{{ index + 1 }}</td>
                         <td>{{ cs.nama }}</td>
-                        <td><a :href="cs.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>

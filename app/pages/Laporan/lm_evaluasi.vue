@@ -18,7 +18,7 @@
                         <td>{{ lme.nama }}</td>
                         <td>{{ lme.ukuran }}</td>
                         <td>{{ lme.jumlah }}</td>
-                        <td><a :href="lme.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>

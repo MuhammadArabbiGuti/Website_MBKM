@@ -18,7 +18,7 @@
                         <td>{{ skm.nama }}</td>
                         <td>{{ skm.ukuran }}</td>
                         <td>{{ skm.jumlah }}</td>
-                        <td><a :href="skm.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>

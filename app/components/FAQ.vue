@@ -18,7 +18,7 @@
             <td>{{ laporan.nama }}</td>
             <td>{{ laporan.format }}</td>
             <td>{{ laporan.ukuran }}</td>
-            <td><a :href="laporan.aksi" download>Download</a></td>
+            <td>Download</td>
           </tr>
         </tbody>
       </table>

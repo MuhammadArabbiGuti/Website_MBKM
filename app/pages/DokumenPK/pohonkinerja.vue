@@ -18,7 +18,7 @@
                         <td>{{ ph.nama }}</td>
                         <td>{{ ph.ukuran }}</td>
                         <td>{{ ph.jumlah }}</td>
-                        <td><a :href="ph.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>

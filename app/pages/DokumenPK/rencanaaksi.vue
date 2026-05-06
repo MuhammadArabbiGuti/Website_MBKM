@@ -14,7 +14,7 @@
                     <tr v-for="(ra, index) in raList" :key="index">
                         <td>{{ index + 1 }}</td>
                         <td>{{ ra.nama }}</td>
-                        <td><a :href="ra.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>

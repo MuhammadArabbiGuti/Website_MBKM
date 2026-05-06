@@ -10,7 +10,7 @@
             <p>Ukuran: {{ size }}</p>
         </div>
       </div>
-      <a href="a" class="button" download><img src="@/assets/download.svg" />Download</a>
+      <p><img src="@/assets/download.svg" />Download</p>
     </div>
 </template>
 

@@ -2,7 +2,11 @@
     <section class="l">
         <div class="l_container">
             <h2>LHKPN</h2>
-            <table>
+
+            <div v-if="pending">Loading...</div>
+            <div v-else-if="error">Gagal mengambil data</div>
+            
+            <table v-else>
                 <thead>
                     <tr>
                         <th>No</th>
@@ -14,7 +18,15 @@
                     <tr v-for="(lhkpn, index) in lhkpnList" :key="index">
                         <td>{{ index + 1 }}</td>
                         <td>{{ lhkpn.nama }}</td>
-                        <td><a :href="lhkpn.aksi" download class="btn">Lihat</a></td>
+                        <td>
+                            <a 
+                                :href="lhkpn.aksi" 
+                                target="_blank"
+                                download=""
+                                class="btn"
+                            >
+                                Lihat
+                            </a></td>
                     </tr>
                 </tbody>
             </table>
@@ -23,19 +35,55 @@
 </template>
 
 <script setup>
-const  lhkpnList = [
-    {nama: "LHKPN TAHUN 2024 – REKAP", aksi: "tes"},
-    {nama: "LHKPN TAHUN 2024 – PEJABAT STRUKTURAL", aksi: "tes"},
-    {nama: "LHKPN TAHUN 2024 – KARO", aksi: "tes"},
-    {nama: "REKAP LHKPN TAHUN 2023", aksi: "tes"},
-    {nama: "LHKPN TAHUN 2023", aksi: "tes"},
-    {nama: "WAJIB LHKPN TAHUN 2022", aksi: "tes"},
-    {nama: "LHKPN TAHUN 2022 – KARO", aksi: "tes"},
-    {nama: "LHKPN TAHUN 2022 – ESELON III DAN IV", aksi: "tes"},
-    {nama: "LHKPN TAHUN 2022 – JAFUNG PBJ", aksi: "tes"},
-    {nama: "LHKPN TAHUN 2020", aksi: "tes"},
-    {nama: "LHKPN TAHUN 2018", aksi: "tes"}
-]
+import { computed } from "vue"
+
+const { data, pending, error } = await useFetch(
+  "https://awdiv2.kalbarprov.go.id/api/contents/pbj.kalbarprov.go.id/lhkpn"
+)
+
+const extractFiles = (html) => {
+  const regex = /href="([^"]+)"[^>]*>(.*?)<\/a>/gi
+  let result = []
+  let match
+
+  while ((match = regex.exec(html)) !== null) {
+    result.push({
+      url: match[1],
+      nama: match[2]
+    })
+  }
+
+  return result
+}
+
+const getFormat = (url) => {
+  if (!url) return "-"
+
+  if (url.toLowerCase().includes(".pdf")) return "PDF"
+  if (url.toLowerCase().includes(".docx")) return "DOCX"
+  if (url.toLowerCase().includes(".xlsx")) return "XLSX"
+
+  return "-"
+}
+
+const lhkpnList = computed(() => {
+  const items = data.value?.data || []
+
+  let hasil = []
+
+  items.forEach(item => {
+    const files = extractFiles(item.content)
+
+    files.forEach(file => {
+      hasil.push({
+        nama: file.nama,
+        aksi: file.url
+      })
+    })
+  })
+
+  return hasil
+})
 </script>
 
 <style scoped>

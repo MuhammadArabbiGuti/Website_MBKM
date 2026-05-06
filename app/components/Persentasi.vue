@@ -2,13 +2,15 @@
     <section class="t">
       <h2>Presentasi</h2>
     <div class="table-container">
-      <table>
+      <div v-if="pending">Loading...</div>
+      <div v-else-if="error">Gagal mengambil data</div>
+
+      <table v-else>
         <thead>
           <tr>
             <th>No</th>
             <th>Nama File</th>
             <th>Format File</th>
-            <th>Ukuran File</th>	
             <th>Aksi</th>
           </tr>
         </thead>
@@ -17,8 +19,15 @@
             <td>{{ index + 1 }}</td>
             <td>{{ laporan.nama }}</td>
             <td>{{ laporan.format }}</td>
-            <td>{{ laporan.ukuran }}</td>
-            <td><a :href="laporan.aksi" download>Download</a></td>
+            <td>
+              <a 
+                :href="laporan.aksi"
+                target="_blank"
+                download
+              >
+                Download
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -26,18 +35,58 @@
     </section>
 </template>
   
-  <script setup>
-  const laporanList = [
-    { nama: "Bela Pengadaan", format: "PDF", ukuran: "2.19 MB",	aksi: "Download"},
-    { nama: "Buku Pintar PP 12 2019", format: "PDF", ukuran: "656 KB",	aksi: "Download"},
-    { nama: "Buku Saku UKPBJ", format: "PDF", ukuran: "17.8 MB", aksi: "Download"},
-    { nama: "Konsolidasi Pengadaan", format: "PDF", ukuran: "2.51 MB", aksi: "Download"},
-    { nama: "Mind Map Perpres 16 Tahun 2018", format: "PDF", ukuran: "4.28 MB",	aksi: "Download"},
-    { nama: "Permasalahan PBJ", format: "PDF", ukuran: "557 MB", aksi: "Download"},
-    { nama: "Rangkuman Perpres 16 Tahun 2018", format: "PDF", ukuran: "3.90 MB", aksi: "Download"},
-    { nama: "Model Dokumen Pemilihan", format: "DOC", ukuran: "199 MB",	aksi: "Download"}
-  ]
-  </script>
+<script setup>
+import { computed } from "vue"
+
+const { data, pending, error } = await useFetch(
+  "https://awdiv2.kalbarprov.go.id/api/contents/pbj.kalbarprov.go.id/presentasi"
+)
+
+const extractFiles = (html) => {
+  const regex = /href="([^"]+)"[^>]*>(.*?)<\/a>/gi
+  let result = []
+  let match
+
+  while ((match = regex.exec(html)) !== null) {
+    result.push({
+      url: match[1],
+      nama: match[2]
+    })
+  }
+
+  return result
+}
+
+const getFormat = (url) => {
+  if (!url) return "-"
+
+  if (url.toLowerCase().includes(".pdf")) return "PDF"
+  if (url.toLowerCase().includes(".docx")) return "DOCX"
+  if (url.toLowerCase().includes(".xlsx")) return "XLSX"
+
+  return "-"
+}
+
+const laporanList = computed(() => {
+  const items = data.value?.data || []
+
+  let hasil = []
+
+  items.forEach(item => {
+    const files = extractFiles(item.content)
+
+    files.forEach(file => {
+      hasil.push({
+        nama: file.nama,
+        format: getFormat(file.url),
+        aksi: file.url
+      })
+    })
+  })
+
+  return hasil
+})
+</script>
 
 <style scoped>
 

@@ -19,14 +19,13 @@
             <td>{{ laporan.format }}</td>
             <td>{{ laporan.ukuran }}</td>
             <td>
-            <a
+            <td
               v-if="laporan.format === 'Youtube'" 
               :href="laporan.aksi" 
-              target="_blank"> Tonton </a>
-            <a
+              target="_blank"> Tonton </td>
+            <td
              v-else-if="laporan.format === 'PDF'"
-             :href="laporan.aksi"
-             download="a"> Donwload </a>
+              > Donwload </td>
             </td>
           </tr>
         </tbody>

@@ -14,7 +14,7 @@
                     <tr v-for="(pj, index) in pjList" :key="index">
                         <td>{{ index + 1 }}</td>
                         <td>{{ pj.nama }}</td>
-                        <td><a :href="pj.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>

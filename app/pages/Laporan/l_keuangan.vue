@@ -19,7 +19,7 @@
                         <td>{{ lk.nama }}</td>
                         <td>{{ lk.ukuran }}</td>
                         <td>{{ lk.jumlah }}</td>
-                        <td><a :href="lk.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table><br></br>
@@ -40,7 +40,7 @@
                         <td>{{ lk.nama }}</td>
                         <td>{{ lk.ukuran }}</td>
                         <td>{{ lk.jumlah }}</td>
-                        <td><a :href="lk.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table><br></br>
@@ -61,7 +61,7 @@
                         <td>{{ lk.nama }}</td>
                         <td>{{ lk.ukuran }}</td>
                         <td>{{ lk.jumlah }}</td>
-                        <td><a :href="lk.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table><br></br>
@@ -82,7 +82,7 @@
                         <td>{{ lk.nama }}</td>
                         <td>{{ lk.ukuran }}</td>
                         <td>{{ lk.jumlah }}</td>
-                        <td><a :href="lk.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table><br></br>

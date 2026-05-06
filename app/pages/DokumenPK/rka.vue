@@ -18,7 +18,7 @@
                         <td>{{ rka.nama }}</td>
                         <td>{{ rka.ukuran }}</td>
                         <td>{{ rka.jumlah }}</td>
-                        <td><a :href="rka.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>

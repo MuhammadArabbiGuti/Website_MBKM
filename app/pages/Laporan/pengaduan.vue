@@ -14,7 +14,7 @@
                     <tr v-for="(lp, index) in lpList" :key="index">
                         <td>{{ index + 1 }}</td>
                         <td>{{ lp.nama }}</td>
-                        <td><a :href="lp.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>

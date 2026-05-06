@@ -14,7 +14,7 @@
                     <tr v-for="(lmr, index) in lmrList" :key="index">
                         <td>{{ index + 1 }}</td>
                         <td>{{ lmr.nama }}</td>
-                        <td><a :href="lmr.aksi" download class="btn">Download</a></td>
+                        <td>Download</td>
                     </tr>
                 </tbody>
             </table>
