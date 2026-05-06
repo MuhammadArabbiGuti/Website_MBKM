@@ -3,6 +3,7 @@ import About from '~/components/About.vue';
 import HeroSection from '~/components/HeroSection.vue';
 import InfoCards from '~/components/InfoCards.vue';
 import Layanan from '~/components/Layanan.vue';
+import AgendaCard from '~/components/AgendaCard.vue';
 
 </script>
 
@@ -12,5 +13,6 @@ import Layanan from '~/components/Layanan.vue';
         <Layanan />
         <About />
         <InfoCards />
+        <AgendaCard />
     </div>
 </template>
