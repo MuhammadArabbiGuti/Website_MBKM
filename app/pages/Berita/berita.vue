@@ -1,37 +1,51 @@
 <script setup>
 import { ref, computed } from "vue"
 
-const berita = ref([
-  { id: 1, judul: "Pengadaan Barang Tahap I", tanggal: "2025-01-15" },
-  { id: 2, judul: "Pengadaan Jasa Tahap II", tanggal: "2025-02-05" },
-  { id: 3, judul: "Laporan Akhir Tahun", tanggal: "2025-12-20" },
-  { id: 4, judul: "Evaluasi Semester Pertama", tanggal: "2025-06-30" }
-])
+const bulanTahun = computed(() => {
+  const map = {
+    "01": "Januari", "02": "Februari", "03": "Maret",
+    "04": "April", "05": "Mei", "06": "Juni",
+    "07": "Juli", "08": "Agustus", "09": "September",
+    "10": "Oktober", "11": "November", "12": "Desember"
+  }
 
-const bulanTahun = [
-  "Januari 2025", "Februari 2025", "Maret 2025",
-  "April 2025", "Mei 2025", "Juni 2025",
-  "Juli 2025", "Agustus 2025", "September 2025",
-  "Oktober 2025", "November 2025", "Desember 2025"
-]
+  const list = []
+
+  berita.value.forEach(item => {
+    if (!item.date) return
+
+    const [tahun, bulan] = item.date.split("-")
+
+    list.push({
+      label: `${map[bulan]} ${tahun}`,
+      value: `${tahun}-${bulan}`
+    })
+  })
+
+  // hapus duplikat
+  const unik = Array.from(
+    new Map(list.map(item => [item.value, item])).values()
+  )
+
+  // urutkan terbaru dulu
+  return unik.sort((a, b) => b.value.localeCompare(a.value))
+})
 
 const selectedFilter = ref("")
+
+const { data, pending, error } = await useFetch(
+  "https://awdiv2.kalbarprov.go.id/api/site_articles/pbj.kalbarprov.go.id"
+)
+
+const berita = computed(() => {
+  return data.value?.data?.data || []
+})
 
 const filteredBerita = computed(() => {
   if (!selectedFilter.value) return berita.value
 
-  const [bulanNama, tahun] = selectedFilter.value.split(" ")
-
-  const bulanMap = {
-    Januari: "01", Februari: "02", Maret: "03", April: "04",
-    Mei: "05", Juni: "06", Juli: "07", Agustus: "08",
-    September: "09", Oktober: "10", November: "11", Desember: "12"
-  }
-
-  const bulan = bulanMap[bulanNama]
-
   return berita.value.filter(item => {
-    return item.tanggal.startsWith(`${tahun}-${bulan}`)
+    return item.date?.startsWith(selectedFilter.value)
   })
 })
 </script>
@@ -42,10 +56,15 @@ const filteredBerita = computed(() => {
 
     <div class="filter">
       <label for="filter">Filter berdasarkan bulan dan tahun:</label>
-      <select id="filter" v-model="selectedFilter">
-        <option value="" selected>Semua</option>
-        <option v-for="item in bulanTahun" :key="item" :value="item">
-          {{ item }}
+      <select v-model="selectedFilter">
+        <option value="">Semua</option>
+
+        <option 
+          v-for="item in bulanTahun" 
+          :key="item.value" 
+          :value="item.value"
+        >
+          {{ item.label }}
         </option>
       </select>
     </div>
@@ -53,12 +72,14 @@ const filteredBerita = computed(() => {
     <div class="berita-daftar">
     <ul>
       <li v-for="item in filteredBerita" :key="item.id" class="berita-item">
+        <div class="item">
         <NuxtLink :to="`/berita/${item.id}`">
-          {{ item.judul }} ({{ item.tanggal }})
+          {{ item.title }}
         </NuxtLink>
+        </div>
       </li>
     </ul>
-  </div>
+    </div>
   </div>
 </template>
 

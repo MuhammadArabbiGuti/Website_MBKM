@@ -1,37 +1,95 @@
 <template>
-    <section class="t">
+  <section class="t">
     <div class="t_c">
       <h2>Instruksi Gubernur</h2>
-      <table>
+
+      <div v-if="pending">Loading...</div>
+      <div v-else-if="error">Gagal mengambil data</div>
+
+      <table v-else>
         <thead>
           <tr>
             <th>No</th>
             <th>Nama File</th>
             <th>Format File</th>
-            <th>Ukuran File</th>	
             <th>Aksi</th>
           </tr>
         </thead>
+
         <tbody>
           <tr v-for="(laporan, index) in laporanList" :key="index">
             <td>{{ index + 1 }}</td>
             <td>{{ laporan.nama }}</td>
             <td>{{ laporan.format }}</td>
-            <td>{{ laporan.ukuran }}</td>
-            <td><a :href="laporan.aksi" download>Download</a></td>
+            <td>
+              <a 
+                :href="laporan.aksi"
+                target="_blank"
+                download
+              >
+                Download
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
+
     </div>
-    </section>
+  </section>
 </template>
   
-  <script setup>
-  const laporanList = [
-    { nama: "Instruksi Gubernur", format: "PDF", ukuran: "656.67 KB",	aksi: "Download"},
-    { nama: "Instruksi Gubernur Percepatan Penyelenggaraan Katalog Elektrnonik", format: "PDF", ukuran: "430.26 KB",	aksi: "Download"}
-  ]
-  </script>
+<script setup>
+import { computed } from "vue"
+
+const { data, pending, error } = await useFetch(
+  "https://awdiv2.kalbarprov.go.id/api/contents/pbj.kalbarprov.go.id/regulasi"
+)
+
+const extractFiles = (html) => {
+  const regex = /href="([^"]+)"[^>]*>(.*?)<\/a>/gi
+  let result = []
+  let match
+
+  while ((match = regex.exec(html)) !== null) {
+    result.push({
+      url: match[1],
+      nama: match[2]
+    })
+  }
+
+  return result
+}
+
+const getFormat = (url) => {
+  if (!url) return "-"
+
+  if (url.toLowerCase().includes(".pdf")) return "PDF"
+  if (url.toLowerCase().includes(".docx")) return "DOCX"
+  if (url.toLowerCase().includes(".xlsx")) return "XLSX"
+
+  return "-"
+}
+
+const laporanList = computed(() => {
+  const items = data.value?.data || []
+
+  let hasil = []
+
+  items.forEach(item => {
+    const files = extractFiles(item.content)
+
+    files.forEach(file => {
+      hasil.push({
+        nama: file.nama,
+        format: getFormat(file.url),
+        aksi: file.url
+      })
+    })
+  })
+
+  return hasil
+})
+</script>
 
 <style scoped>
 

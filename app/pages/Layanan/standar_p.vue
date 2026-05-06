@@ -1,78 +1,136 @@
 <template>
-    <section class="sp">
-        <div class="sp_c">
-            <h2>Dokumen Standar Pelayanan</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Data</th>
-                        <th>Ukuran File</th>
-                        <th>Jumlah File</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(sp, index) in spList" :key="index">
-                        <td>{{ index + 1 }}</td>
-                        <td>{{ sp.nama }}</td>
-                        <td>{{ sp.ukuran }}</td>
-                        <td>{{ sp.jumlah }}</td>
-                        <td><a :href="sp.aksi" download class="btn">Download</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-</template>
+  <section class="t">
+    <div class="t_c">
+      <h2>Dokumen Standar Pelayanan</h2>
 
+      <div v-if="pending">Loading...</div>
+      <div v-else-if="error">Gagal mengambil data</div>
+
+      <table v-else>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama File</th>
+            <th>Format File</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="(pelayanan, index) in pelayananList" :key="index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ pelayanan.nama }}</td>
+            <td>{{ pelayanan.format }}</td>
+            <td>
+              <a 
+                :href="pelayanan.aksi"
+                target="_blank"
+                download
+              >
+                Download
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+</template>
+  
 <script setup>
-const  spList = [
-    {nama: "SK Tim Pelayanan Publik, Visi, Misi, Moto, Maklumat", ukuran: "5.15 MB", jumlah: "1", aksi: "Download"},
-    {nama: "SK Penetapan Standar Pelayanan Publik Pada Biro PBJ", ukuran: "15.54 MB", jumlah: "1", aksi: "Download"},
-    {nama: "SK Pengelolaan Pengaduan", ukuran: "4.45 MB", jumlah: "1", aksi: "Download"}
-]
+import { computed } from "vue"
+
+const { data, pending, error } = await useFetch(
+  "https://awdiv2.kalbarprov.go.id/api/contents/pbj.kalbarprov.go.id/pelayanan"
+)
+
+const extractFiles = (html) => {
+  const regex = /href="([^"]+)"[^>]*>(.*?)<\/a>/gi
+  let result = []
+  let match
+
+  while ((match = regex.exec(html)) !== null) {
+    result.push({
+      url: match[1],
+      nama: match[2]
+    })
+  }
+
+  return result
+}
+
+const getFormat = (url) => {
+  if (!url) return "-"
+
+  if (url.toLowerCase().includes(".pdf")) return "PDF"
+  if (url.toLowerCase().includes(".docx")) return "DOCX"
+  if (url.toLowerCase().includes(".xlsx")) return "XLSX"
+
+  return "-"
+}
+
+const pelayananList = computed(() => {
+  const items = data.value?.data || []
+
+  let hasil = []
+
+  items.forEach(item => {
+    const files = extractFiles(item.content)
+
+    files.forEach(file => {
+      hasil.push({
+        nama: file.nama,
+        format: getFormat(file.url),
+        aksi: file.url
+      })
+    })
+  })
+
+  return hasil
+})
 </script>
 
 <style scoped>
-.sp {
-    width: 100%;
-    max-width: 2000px;
-    background-color: #f4f6f7;
-    align-items: center;
-    padding: 20px 0;
+
+.t {
+  width: 100%;
+  max-width: 2000px;
+  background-color: #f4f6f7;
+  align-items: center;
+  padding: 20px 0;
 }
 
-.sp_c{
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    margin: 0 200px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
+.t_c{
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  margin: 0 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
 }
 
-.sp_c h2 {
-    border-bottom: 2px solid #f1c40f;
-    padding-bottom: 2%;
+.t_c h2 {
+  border-bottom: 2px solid #f1c40f;
+  padding-bottom: 2%;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  min-width: 600px;
 }
 
 th, td {
-    border: none;
-    padding: 8px;
-    text-align: left;
+  border: none;
+  padding: 8px;
+  text-align: left;
 }
 
 th {
-    background-color: #2f6d3f;
-    color: white;
+  background-color: #2f6d3f;
+  color: white;
 }
 
 a {
@@ -88,7 +146,7 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-    .sp_c {
+    .t_c {
         margin: 10px
     }
 }
