@@ -22,7 +22,7 @@
                             <a 
                                 :href="lhkpn.aksi" 
                                 target="_blank"
-                                download=""
+                                rel="noopener"
                                 class="btn"
                             >
                                 Lihat

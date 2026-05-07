@@ -25,7 +25,7 @@
               <a 
                 :href="laporan.aksi"
                 target="_blank"
-                download
+                rel="noopener"
               >
                 Download
               </a>

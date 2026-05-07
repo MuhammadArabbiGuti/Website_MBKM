@@ -25,7 +25,7 @@
               <a 
                 :href="sop.aksi"
                 target="_blank"
-                download
+                rel="noopener"
               >
                 Download
               </a>
