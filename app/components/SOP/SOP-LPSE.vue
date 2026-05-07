@@ -23,8 +23,7 @@
             <td>{{ sop.format }}</td>
             <td>
               <a 
-                :href="sop.aksi"
-                target="_blank"
+                :href="forceHttps(sop.aksi)"
                 rel="noopener"
               >
                 Download
@@ -44,6 +43,10 @@ import { computed } from "vue"
 const { data, pending, error } = await useFetch(
   "https://awdiv2.kalbarprov.go.id/api/contents/pbj.kalbarprov.go.id/sop-lpse"
 )
+
+const forceHttps = (url) => {
+  return url.replace(/^http:\/\//i, 'https://')
+}
 
 const extractFiles = (html) => {
   const regex = /href="([^"]+)"[^>]*>(.*?)<\/a>/gi

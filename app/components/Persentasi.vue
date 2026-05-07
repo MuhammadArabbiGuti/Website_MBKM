@@ -21,8 +21,7 @@
             <td>{{ laporan.format }}</td>
             <td>
               <a 
-                :href="laporan.aksi"
-                target="_blank"
+                :href="forceHttps(laporan.aksi)"
                 rel="noopener"
               >
                 Download
@@ -41,6 +40,11 @@ import { computed } from "vue"
 const { data, pending, error } = await useFetch(
   "https://awdiv2.kalbarprov.go.id/api/contents/pbj.kalbarprov.go.id/presentasi"
 )
+
+const forceHttps = (url) => {
+  return url.replace(/^http:\/\//i, 'https://')
+}
+
 
 const extractFiles = (html) => {
   const regex = /href="([^"]+)"[^>]*>(.*?)<\/a>/gi

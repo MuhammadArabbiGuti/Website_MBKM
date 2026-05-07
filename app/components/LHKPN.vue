@@ -20,8 +20,7 @@
                         <td>{{ lhkpn.nama }}</td>
                         <td>
                             <a 
-                                :href="lhkpn.aksi" 
-                                target="_blank"
+                                :href="forceHttps(lhkpn.aksi)"
                                 rel="noopener"
                                 class="btn"
                             >
@@ -40,6 +39,11 @@ import { computed } from "vue"
 const { data, pending, error } = await useFetch(
   "https://awdiv2.kalbarprov.go.id/api/contents/pbj.kalbarprov.go.id/lhkpn"
 )
+
+const forceHttps = (url) => {
+  return url.replace(/^http:\/\//i, 'https://')
+}
+
 
 const extractFiles = (html) => {
   const regex = /href="([^"]+)"[^>]*>(.*?)<\/a>/gi
