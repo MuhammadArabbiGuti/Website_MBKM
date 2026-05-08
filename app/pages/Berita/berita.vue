@@ -22,12 +22,10 @@ const bulanTahun = computed(() => {
     })
   })
 
-  // hapus duplikat
   const unik = Array.from(
     new Map(list.map(item => [item.value, item])).values()
   )
 
-  // urutkan terbaru dulu
   return unik.sort((a, b) => b.value.localeCompare(a.value))
 })
 
